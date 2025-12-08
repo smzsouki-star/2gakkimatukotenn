@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古典テスト対策クイズ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>🏛️ 古典テスト対策クイズ</h1>
+        </div>
+    </header>
+
+    <main id="app">
+        <div class="container">
+            <section id="start-screen" class="screen active card">
+                <div class="card-content">
+                    <h2>テスト範囲：鴻門之会・大鏡「弓争ひ」</h2>
+                    <p>収集された問題の中からランダムで<strong>5問</strong>出題します。<br>完璧を目指して頑張ってください！</p>
+                    <div class="action-area">
+                        <button id="start-quiz-btn" class="btn primary-btn pulse">クイズ開始</button>
+                        <button id="show-explanation-btn" class="btn secondary-btn">解説ページへ</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quiz-screen" class="screen quiz-container card">
+                <div class="quiz-header">
+                    <h2 id="question-counter">Q. 1 / 5</h2>
+                </div>
+
+                <div class="question-box" id="question-box">
+                    <div class="question-text-wrapper">
+                        <p id="question-text" class="question-text">問題を読み込み中...</p>
+                    </div>
+
+                    <ul id="options-list" class="option-list">
+                        <!-- Options will be injected here -->
+                    </ul>
+                </div>
+
+                <div class="quiz-footer">
+                    <button id="next-button" class="btn primary-btn" disabled>解答する</button>
+                </div>
+            </section>
+
+            <section id="result-screen" class="screen card" id="result">
+                <div class="card-content">
+                    <h2>クイズ終了！</h2>
+                    <div class="score-display">
+                        <p id="score-text"></p>
+                    </div>
+                    <p>結果は解説ページで確認できます。</p>
+                    <div class="action-area">
+                        <button id="review-explanation-btn" class="btn secondary-btn">解説ページへ</button>
+                        <button id="restart-quiz-btn" class="btn primary-btn">もう一度挑戦</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="explanation-screen" class="screen card wide-card">
+                <div class="card-header">
+                    <h2>📜 解説・要点まとめ</h2>
+                </div>
+                <div id="explanation-content" class="scrollable-content">
+                    <!-- Explaination content injected here -->
+                </div>
+                <div class="card-footer">
+                    <button id="back-to-start-btn" class="btn secondary-btn">スタート画面へ戻る</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 古典学習サポート</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
