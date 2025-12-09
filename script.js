@@ -133,16 +133,11 @@ function processAnswer() {
     // 正誤判定とスタイリング
     if (selectedAnswerIndex === correctIndex) {
         score++;
+        allOptions[selectedAnswerIndex].classList.add('correct');
+    } else {
+        allOptions[selectedAnswerIndex].classList.add('incorrect');
+        allOptions[correctIndex].classList.add('correct');
     }
-
-    allOptions.forEach(li => {
-        const index = parseInt(li.dataset.index);
-        if (index === correctIndex) {
-            li.classList.add('correct');
-        } else if (index === selectedAnswerIndex) {
-            li.classList.add('incorrect');
-        }
-    });
 
     // 解説の表示
     const rationaleDiv = document.createElement('div');
@@ -159,6 +154,7 @@ function processAnswer() {
         nextButton.textContent = '結果を見る';
         nextButton.onclick = showResult;
     }
+    // ボタンを有効化して、ユーザーが結果を確認してから次に進めるようにする
     nextButton.disabled = false;
 }
 
