@@ -38,6 +38,17 @@ function showScreen(screenId) {
     if (targetScreen) targetScreen.classList.add('active');
 }
 
+// Fisher-Yatesシャッフルアルゴリズム
+function shuffleArray(array) {
+    // 元の配列を変更しないようにコピーを作成
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 // --- クイズ開始処理 ---
 function startQuiz() {
     if (!quizData || !quizData.questions || quizData.questions.length === 0) {
@@ -51,7 +62,7 @@ function startQuiz() {
     selectedAnswerIndex = null;
 
     // 1. 問題をシャッフルし、5問を抽出
-    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    const shuffled = shuffleArray(allQuestions);
     currentQuestions = shuffled.slice(0, QUIZ_COUNT);
 
     // 2. クイズ画面へ遷移し、最初の問題を表示
@@ -296,7 +307,6 @@ function createExplanationPage() {
 
 // --- イベントリスナー設定 ---
 startQuizBtn.addEventListener('click', startQuiz);
-nextButton.addEventListener('click', processAnswer);
 restartQuizBtn.addEventListener('click', startQuiz);
 
 showExplanationBtn.addEventListener('click', createExplanationPage);
