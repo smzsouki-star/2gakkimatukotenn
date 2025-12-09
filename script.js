@@ -65,9 +65,12 @@ function loadQuestion() {
     nextButton.disabled = true;
     optionsList.innerHTML = '';
 
-    // 以前の解説を削除
-    const oldRationale = questionBox.querySelector('.rationale');
-    if (oldRationale) oldRationale.remove();
+    // 以前の解説を完全に削除
+    const oldRationales = questionBox.querySelectorAll('.rationale');
+    oldRationales.forEach(rationale => {
+        rationale.innerHTML = '';
+        rationale.remove();
+    });
 
     const q = currentQuestions[currentQuestionIndex];
 
