@@ -63,6 +63,8 @@ function startQuiz() {
 function loadQuestion() {
     selectedAnswerIndex = null;
     nextButton.disabled = true;
+    nextButton.textContent = '解答する';
+    nextButton.onclick = processAnswer;
     optionsList.innerHTML = '';
 
     // 以前の解説を完全に削除
@@ -151,8 +153,6 @@ function processAnswer() {
 
 // 6. 次の問題へ進む
 function nextQuestion() {
-    // ボタンの動作を「解答する」に戻す
-    nextButton.onclick = processAnswer;
     loadQuestion();
 }
 
