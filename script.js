@@ -168,50 +168,127 @@ function createExplanationPage() {
 
     const explanationData = [
         {
-            title: '鴻門之会 (漢文) - 要点まとめ',
+            icon: '📜',
+            title: '鴻門之会',
+            subtitle: '漢文',
             source: 'テスト範囲',
-            keyPoints: [
-                '座席の順：**東向**（項王/主人） > **南向**（范増/次席） > **北向**（沛公/客） > **西向**（張良/陪席）',
-                '范増の合図：**玉玦（ぎょくけつ）**を三たび示し、劉邦殺害を促す。',
-                '剣の舞：**項荘**が剣舞と偽って劉邦を斬ろうとする。**項伯**が身をもってこれをかばう。',
-                '重要句法：「然不自意、**能先入破秦**」は「思いもよらず、先に秦を破ることができた」と謙遜。',
-                '重要句法：「不然、**何以至此**」は反語で「そうでなければ、どうしてこのようなことになろうか、いやならない」。'
+            sections: [
+                {
+                    heading: '🪑 座席の順序',
+                    points: [
+                        '**東向**（項王/主人） - 最も尊い位置',
+                        '**南向**（范増/次席） - 項王の補佐役',
+                        '**北向**（沛公/客） - 客人の位置',
+                        '**西向**（張良/陪席） - 最も低い位置'
+                    ]
+                },
+                {
+                    heading: '⚔️ 重要な場面',
+                    points: [
+                        '**范増の合図**：玉玦（ぎょくけつ）を三たび示し、劉邦殺害を促す',
+                        '**項荘の剣舞**：剣舞と偽って劉邦を斬ろうとする',
+                        '**項伯の防御**：身をもって劉邦をかばう'
+                    ]
+                },
+                {
+                    heading: '📖 重要句法',
+                    points: [
+                        '「然不自意、**能先入破秦**」→「思いもよらず、先に秦を破ることができた」（謙遜表現）',
+                        '「不然、**何以至此**」→「そうでなければ、どうしてこのようなことになろうか」（反語）'
+                    ]
+                }
             ]
         },
         {
-            title: '大鏡「弓争ひ」 (古文) - 要点まとめ',
+            icon: '🏹',
+            title: '大鏡「弓争ひ」',
+            subtitle: '古文',
             source: 'テスト範囲',
-            keyPoints: [
-                '登場人物：**入道殿**（道長/弟/主人公）、**中の関白殿**（道隆/兄）、**帥殿**（伊周/道隆の子/甥）',
-                '争いの背景：道隆の死後、道長と伊周が**氏の長者・政権**の座を巡るライバル関係。',
-                '道長の宣言：「**道長が家より、帝・后立ち給ふべきものならば、この矢当たれ。**」と、神懸かり的な勝利を宣言し、自らの権力掌握の野望を示す。',
-                '道隆の心理：伊周が「無辺世界」（的外れ）を射た結果、「**色青くなりぬ**」と絶望し、家門の衰退を予感。',
-                '敬語：「申させ給うて」は謙譲語（道隆→道長）＋尊敬語（道隆）＋尊敬語（道隆）の最高敬語。'
+            sections: [
+                {
+                    heading: '👥 登場人物',
+                    points: [
+                        '**入道殿**（道長）- 弟、主人公',
+                        '**中の関白殿**（道隆）- 兄',
+                        '**帥殿**（伊周）- 道隆の子、道長の甥'
+                    ]
+                },
+                {
+                    heading: '⚡ 争いの背景',
+                    points: [
+                        '道隆の死後、道長と伊周が**氏の長者・政権**の座を巡って対立',
+                        '弓の腕前を競う場面で、政治的な運命が決まる'
+                    ]
+                },
+                {
+                    heading: '💬 重要な発言',
+                    points: [
+                        '**道長の宣言**：「道長が家より、帝・后立ち給ふべきものならば、この矢当たれ」',
+                        '→ 神懸かり的な勝利宣言、権力掌握の野望を示す'
+                    ]
+                },
+                {
+                    heading: '😰 心理描写',
+                    points: [
+                        '伊周が「無辺世界」（的外れ）を射る',
+                        '道隆は「**色青くなりぬ**」と絶望し、家門の衰退を予感'
+                    ]
+                },
+                {
+                    heading: '🗣️ 敬語表現',
+                    points: [
+                        '「申させ給うて」= 謙譲語 + 尊敬語 + 尊敬語',
+                        '最高敬語の使用例として重要'
+                    ]
+                }
             ]
         }
     ];
 
-    explanationData.forEach(data => {
-        const h3 = document.createElement('h3');
-        h3.textContent = data.title;
-        explanationContent.appendChild(h3);
+    explanationData.forEach((data, index) => {
+        // セクションカードの作成
+        const sectionCard = document.createElement('div');
+        sectionCard.classList.add('explanation-section');
 
-        const sourceP = document.createElement('p');
-        sourceP.textContent = `（出典: ${data.source}）`;
-        explanationContent.appendChild(sourceP);
+        // ヘッダー部分
+        const header = document.createElement('div');
+        header.classList.add('section-header');
+        header.innerHTML = `
+            <div class="section-title-wrapper">
+                <span class="section-icon">${data.icon}</span>
+                <div>
+                    <h3 class="section-title">${data.title}</h3>
+                    <span class="section-subtitle">${data.subtitle}</span>
+                </div>
+            </div>
+        `;
+        sectionCard.appendChild(header);
 
-        const keyPointsDiv = document.createElement('div');
-        keyPointsDiv.classList.add('key-points');
-        const ul = document.createElement('ul');
+        // 各サブセクション
+        data.sections.forEach(section => {
+            const subSection = document.createElement('div');
+            subSection.classList.add('sub-section');
 
-        data.keyPoints.forEach(point => {
-            const li = document.createElement('li');
-            li.textContent = point;
-            ul.appendChild(li);
+            const subHeading = document.createElement('h4');
+            subHeading.classList.add('sub-heading');
+            subHeading.textContent = section.heading;
+            subSection.appendChild(subHeading);
+
+            const pointsList = document.createElement('ul');
+            pointsList.classList.add('points-list');
+
+            section.points.forEach(point => {
+                const li = document.createElement('li');
+                // **text** を <strong>text</strong> に変換
+                li.innerHTML = point.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                pointsList.appendChild(li);
+            });
+
+            subSection.appendChild(pointsList);
+            sectionCard.appendChild(subSection);
         });
 
-        keyPointsDiv.appendChild(ul);
-        explanationContent.appendChild(keyPointsDiv);
+        explanationContent.appendChild(sectionCard);
     });
 
     showScreen('explanation-screen');
